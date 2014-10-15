@@ -1,0 +1,82 @@
+{
+  "name": "potter",
+  "version": "3.0.0",
+  "description": "A command line for developer workflows, and generating applications and services",
+  "keywords": [
+    "web",
+    "framework",
+    "scaffold",
+    "guide",
+    "production"
+  ],
+  "author": "Jake Verbaten <jakev@uber.com>",
+  "repository": "git://github.com/uber/potter.git",
+  "main": "index",
+  "homepage": "https://github.com/uber/potter",
+  "bugs": {
+    "url": "https://github.com/uber/potter/issues"
+  },
+  "contributors": [
+    "Tom Croucher <tomc@uber.com>"
+  ],
+  "bin": {
+    "potter": "./cli/cli.js",
+    "playdoh": "./cli/cli-deprecated.js"
+  },
+  "dependencies": {
+    "array-find": "^0.1.1",
+    "chalk": "^0.5.1",
+    "debuglog": "^1.0.1",
+    "error": "^3.0.0",
+    "minimist": "^1.1.0",
+    "mkdirp": "^0.5.0",
+    "msee": "^0.1.1",
+    "parents": "^1.0.0",
+    "process": "^0.7.0",
+    "read-json": "0.0.0",
+    "rimraf": "^2.2.8",
+    "run-parallel": "^1.0.0",
+    "run-series": "^1.0.2",
+    "safe-json-parse": "^2.0.0",
+    "semver": "^3.0.1",
+    "stackup": "0.0.5",
+    "wizzard": "1.0.0",
+    "xtend": "^4.0.0",
+    "uuid": "^1.4.1",
+    "url": "^0.10.1"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/uber/potter/raw/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "fixtures-fs": "^1.0.2",
+    "istanbul": "~0.1.46",
+    "jshint": "^2.5.1",
+    "opn": "^0.1.2",
+    "pre-commit": "0.0.8",
+    "request": "^2.36.0",
+    "tap-spec": "^0.1.9",
+    "tape": "^2.12.3"
+  },
+  "scripts": {
+    "test": "npm run check-package -s && npm run jshint -s && node test/index.js | tap-spec",
+    "fast-test": "npm run check-package -s && npm run jshint -s && node test/unit.js | tap-spec",
+    "check-package": "npm ls 1>/dev/null --loglevel=warn",
+    "jshint-pre-commit": "jshint --verbose $(git diff --cached --name-only --diff-filter=ACMRTUXB | grep '\\.js$')",
+    "jscs-pre-commit": "jscs $(git diff --cached --name-only | grep '\\.js$')",
+    "jshint": "jshint --verbose .",
+    "fast-cover": "istanbul cover --report none --print detail test/unit.js",
+    "cover": "istanbul cover --report none --print detail test/index.js",
+    "view-cover": "istanbul report html && opn ./coverage/index.html"
+  },
+  "pre-commit": [
+    "jshint-pre-commit",
+    "fast-test"
+  ],
+  "engine": {
+    "node": ">= 0.10.x"
+  }
+}
