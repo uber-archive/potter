@@ -234,7 +234,7 @@ function remove(opts, cb) {
 
     var cmd = 'rm -S ' + plugin;
     npm(cmd, potterHome, function npmRm(err, stdout, stderr) {
-        if(err) throw new Error('wat rm');
+        if(err) throw err;
 
         //console.log(stdout);
         //console.log(stderr);
@@ -249,7 +249,7 @@ function remove(opts, cb) {
 function list() {
     var cmd = 'ls | grep "^[└├]"';
     npm(cmd, potterHome, function npmList(err, stdout) {
-        if(err) throw new Error('wat');
+        if(err) throw err;
         //console.log(stderr);
         var libs = stdout.split('\n');
         libs = libs.map(function(lib) {
