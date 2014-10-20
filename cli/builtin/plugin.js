@@ -224,7 +224,9 @@ function installPlugin(pkg, version, rollback, cb) {
 
 function npm(cmd, cwd, cb) {
     cmd = 'npm ' + cmd;
-    childProcess.exec(cmd, {cwd:cwd}, cb);
+    mkdirp(cwd, function onDir() {
+        childProcess.exec(cmd, {cwd:cwd}, cb);
+    })
 }
 
 function remove(opts, cb) {
