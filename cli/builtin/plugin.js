@@ -226,7 +226,7 @@ function npm(cmd, cwd, cb) {
     cmd = 'npm ' + cmd;
     mkdirp(cwd, function onDir() {
         childProcess.exec(cmd, {cwd:cwd}, cb);
-    })
+    });
 }
 
 function remove(opts, cb) {
