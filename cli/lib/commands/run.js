@@ -85,6 +85,10 @@ function runCommand(fn, args, opts) {
             fn = fn.command[opts.subCommand];
         }
 
+        if (fn.command) {
+            fn = fn.command;
+        }
+
         fn.apply(null, args);
         return true;
     }
