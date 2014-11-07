@@ -2,10 +2,6 @@
 'use strict';
 // such stack trace. so long.
 require('stackup');
-
-main.callAsCli = callAsCli;
-module.exports = main;
-
 var path = require('path');
 var process = require('process');
 var parseArgs = require('minimist');
@@ -18,8 +14,11 @@ var mergeCommands = require('./lib/mergeCmds.js');
 var getCommand = require('./lib/commands/get.js');
 var runCommand = require('./lib/commands/run.js');
 
-var pluginsDir = path.join(process.env.HOME,'.potter', 'node_modules');
+var pluginsDir = path.join(process.env.HOME,'.potter/node_modules');
 var priorityCmds = ['plugin'];
+
+main.callAsCli = callAsCli;
+module.exports = main;
 
 if (require.main === module) {
     callAsCli();
@@ -32,7 +31,7 @@ function callAsCli() {
     argv.potterVersion = require('../package.json').version;
 
     //merge builtsin first
-    argv._commands = mergeCommands(__dirname, ['lib', 'cli-deprecated.js']);
+    argv._commands = mergeCommands(__dirname, ['lib', 'playdoh.js']);
     main(argv);
 }
 

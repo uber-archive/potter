@@ -11,7 +11,7 @@
   ],
   "author": "Jake Verbaten <jakev@uber.com>",
   "repository": "git://github.com/uber/potter.git",
-  "main": "bin/cli.js",
+  "main": "bin/potter.js",
   "homepage": "https://github.com/uber/potter",
   "bugs": {
     "url": "https://github.com/uber/potter/issues"
@@ -20,8 +20,8 @@
     "Tom Croucher <tomc@uber.com>"
   ],
   "bin": {
-    "potter": "bin/cli.js",
-    "playdoh": "bin/cli-deprecated.js"
+    "potter": "bin/potter.js",
+    "playdoh": "bin/playdoh.js"
   },
   "dependencies": {
     "array-find": "^0.1.1",
@@ -63,15 +63,14 @@
     "tape": "^2.12.3"
   },
   "scripts": {
-    "test": "npm run check-package -s && npm run jshint -s && node test/index.js | tap-spec",
-    "fast-test": "npm run check-package -s && npm run jshint -s && node test/unit.js | tap-spec",
+    "test": "npm run check-package -s && npm run jshint -s && tape test/*.js | tap-spec",
+    "fast-test": "npm run check-package -s && npm run jshint -s && tape test/*.js | tap-spec",
     "check-package": "npm ls 1>/dev/null --loglevel=warn",
     "jshint-pre-commit": "jshint --verbose $(git diff --cached --name-only --diff-filter=ACMRTUXB | grep '\\.js$')",
     "jscs-pre-commit": "jscs $(git diff --cached --name-only | grep '\\.js$')",
     "jshint": "jshint --verbose .",
     "lint": "lint-trap",
-    "fast-cover": "istanbul cover --report none --print detail test/unit.js",
-    "cover": "istanbul cover --report none --print detail test/index.js",
+    "cover": "istanbul cover --report none --print detail tape -- test/*.js",
     "view-cover": "istanbul report html && opn ./coverage/index.html"
   },
   "pre-commit": [
