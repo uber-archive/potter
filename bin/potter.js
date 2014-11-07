@@ -1,12 +1,15 @@
 #!/usr/bin/env node
+/*eslint no-console:0 */
 'use strict';
 // such stack trace. so long.
 require('stackup');
+var console = require('console');
 var path = require('path');
 var process = require('process');
 var parseArgs = require('minimist');
 var chalk = require('chalk');
 var extend = require('xtend/immutable');
+var osenv = require('osenv');
 
 var defaultPrint = require('./lib/default-print.js');
 // var verifyVersion = require('./lib/verify-version.js');
@@ -14,7 +17,7 @@ var mergeCommands = require('./lib/mergeCmds.js');
 var getCommand = require('./lib/commands/get.js');
 var runCommand = require('./lib/commands/run.js');
 
-var pluginsDir = path.join(process.env.HOME,'.potter/node_modules');
+var pluginsDir = path.join(osenv.home(), '.potter/node_modules');
 var priorityCmds = ['plugin'];
 
 main.callAsCli = callAsCli;
@@ -30,7 +33,7 @@ function callAsCli() {
     });
     argv.potterVersion = require('../package.json').version;
 
-    //merge builtsin first
+    // merge builtsin first
     argv._commands = mergeCommands(__dirname, ['lib', 'playdoh.js']);
     main(argv);
 }
@@ -50,14 +53,16 @@ function main(opts) {
     };
     opts.cmd = 'potter ' + command;
 
-    //run priority commands first
-    if (priorityCmds.indexOf(command) !== -1) {
-        if (callCommand()) return;
+    // run priority commands first
+    if (priorityCmds.indexOf(command) !== -1 && callCommand()) {
+        return;
     }
 
-    //run all other commands with plugins to ensure enumeration
+    // run all other commands with plugins to ensure enumeration
     opts._commands = mergeCommands(pluginsDir, ['.bin'], opts._commands);
-    if (callCommand()) return;
+    if (callCommand()) {
+        return;
+    }
 
     // new line for pretty.
     console.log('');

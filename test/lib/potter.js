@@ -1,6 +1,7 @@
 'use strict';
 var exec = require('child_process').exec;
 var path = require('path');
+var process = require('process');
 
 var cli = path.join(__dirname, '../../bin/potter.js');
 var istanbul = path.join(__dirname, '../../node_modules/.bin/istanbul');
@@ -18,8 +19,9 @@ function potter(cmd, opts, callback) {
 }
 
 function spawnChild(file, args, opts, callback) {
-    /*jshint camelcase: false */
+    /*eslint-disable no-process-env */
     var isIstanbul = process.env.running_under_istanbul;
+    /*eslint-enable no-process-env */
 
     var cmd;
     // istanbul can't actually cover processes that crash.
