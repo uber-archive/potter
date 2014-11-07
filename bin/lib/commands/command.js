@@ -7,8 +7,7 @@ function Command(opts) {
         return new Command(opts);
     }
 
-    this.name = typeof (opts && opts.name) === 'string' ?
-        opts.name : '';
+    this.name = typeof (opts && opts.name) === 'string' ? opts.name : '';
     this.commands = (opts && opts.commands) || {};
     this.scaffolds = (opts && opts.scaffolds) || {};
     this.workflows = (opts && opts.workflows) || {};
