@@ -1,3 +1,4 @@
+'use strict';
 module.exports = waitFor;
 
 function waitFor(expr, reply, proc) {

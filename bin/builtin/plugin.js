@@ -1,3 +1,4 @@
+'use strict';
 var chalk = require('chalk');
 var childProcess = require('child_process');
 var fs = require('fs');

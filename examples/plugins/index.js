@@ -1,6 +1,6 @@
+'use strict';
 var path = require('path');
 
-// 
 var genHelper = require('./potter.enumerated/gen.js');
 
 module.exports = {

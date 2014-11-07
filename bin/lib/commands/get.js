@@ -1,3 +1,4 @@
+'use strict';
 /* given some commands object you can get a concrete
     command or sub command.
 

@@ -1,3 +1,4 @@
+'use strict';
 var test = require('tape');
 var parallel = require('run-parallel');
 

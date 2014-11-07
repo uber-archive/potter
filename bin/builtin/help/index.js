@@ -1,3 +1,4 @@
+'use strict';
 var join = require('path').join;
 
 var getCommand = require('../../lib/commands/get.js');

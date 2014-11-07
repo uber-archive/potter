@@ -1,11 +1,10 @@
+'use strict';
 var exec = require('child_process').exec;
 var path = require('path');
 
-var cli = path.join(__dirname, '..', '..', 'cli', 'cli.js');
-var istanbul = path.join(__dirname, '..', '..',
-    'node_modules', '.bin', 'istanbul');
-var coverageFolder = path.join(__dirname, '..', '..',
-    'coverage');
+var cli = path.join(__dirname, '../../bin/cli.js');
+var istanbul = path.join(__dirname, '../../node_modules/.bin/istanbul');
+var coverageFolder = path.join(__dirname, '../../coverage');
 var count = 0;
 
 module.exports = potter;

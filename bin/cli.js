@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 // such stack trace. so long.
 require('stackup');
 

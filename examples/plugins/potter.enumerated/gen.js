@@ -1,3 +1,4 @@
+'use strict';
 var ngen = require('uber-ngen/bin/ngen.js');
 
 function enumeratedGen(defaults) {

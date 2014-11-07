@@ -1,3 +1,4 @@
+'use strict';
 var fs = require('fs');
 var msee = require('msee');
 var process = require('process');
@@ -27,7 +28,7 @@ function printHelp(opts, settings) {
         return console.log(text);
     } else {
 
-      var pager = Pager({ pager: 'less' });
+      var pager = makePager({ pager: 'less' });
 
       pager.write(text);
       return pager.end();
@@ -36,7 +37,7 @@ function printHelp(opts, settings) {
 
 var spawn = require('child_process').spawn;
 
-function Pager(opts, cb) {
+function makePager(opts, cb) {
     if (typeof opts === 'function') {
         cb = opts;
         opts = {};

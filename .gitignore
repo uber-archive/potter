@@ -1,3 +1,7 @@
+.jscsrc
+.eslintrc
+.jshintrc
+
 # Compiled source #
 ###################
 *.com

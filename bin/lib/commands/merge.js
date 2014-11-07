@@ -1,5 +1,6 @@
+'use strict';
+/*jshint newcap:false*/
 var TypedError = require('error/typed');
-
 var Command = require('./command.js');
 
 var DuplicateKey = TypedError({
@@ -21,7 +22,7 @@ var DuplicateKey = TypedError({
 module.exports = mergeCommands;
 
 function mergeCommands(base, cmds) {
-    var command = Command(base);
+    var command = new Command(base);
     cmds = cmds || {};
 
     // For each type make any direct function assignments into objects

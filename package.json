@@ -11,7 +11,7 @@
   ],
   "author": "Jake Verbaten <jakev@uber.com>",
   "repository": "git://github.com/uber/potter.git",
-  "main": "index",
+  "main": "bin/cli.js",
   "homepage": "https://github.com/uber/potter",
   "bugs": {
     "url": "https://github.com/uber/potter/issues"
@@ -20,8 +20,8 @@
     "Tom Croucher <tomc@uber.com>"
   ],
   "bin": {
-    "potter": "./cli/cli.js",
-    "playdoh": "./cli/cli-deprecated.js"
+    "potter": "bin/cli.js",
+    "playdoh": "bin/cli-deprecated.js"
   },
   "dependencies": {
     "array-find": "^0.1.1",
@@ -55,6 +55,7 @@
     "fixtures-fs": "^1.0.2",
     "istanbul": "~0.1.46",
     "jshint": "^2.5.1",
+    "lint-trap": "^0.2.1",
     "opn": "^0.1.2",
     "pre-commit": "0.0.8",
     "request": "^2.36.0",
@@ -68,6 +69,7 @@
     "jshint-pre-commit": "jshint --verbose $(git diff --cached --name-only --diff-filter=ACMRTUXB | grep '\\.js$')",
     "jscs-pre-commit": "jscs $(git diff --cached --name-only | grep '\\.js$')",
     "jshint": "jshint --verbose .",
+    "lint": "lint-trap",
     "fast-cover": "istanbul cover --report none --print detail test/unit.js",
     "cover": "istanbul cover --report none --print detail test/index.js",
     "view-cover": "istanbul report html && opn ./coverage/index.html"

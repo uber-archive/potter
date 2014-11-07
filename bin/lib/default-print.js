@@ -1,3 +1,4 @@
+'use strict';
 module.exports = defaultPrint;
 
 function defaultPrint(name) {

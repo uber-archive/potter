@@ -1,10 +1,7 @@
+'use strict';
 var Wizzard = require('wizzard').Wizzard;
 var chalk = require('chalk');
 
-/* runs a command.
-
-
-*/
 module.exports = runCommand;
 
 function runCommand(fn, args, opts) {
