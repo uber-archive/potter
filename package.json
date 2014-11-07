@@ -40,10 +40,10 @@
     "safe-json-parse": "^2.0.0",
     "semver": "^3.0.1",
     "stackup": "0.0.5",
-    "wizzard": "1.0.0",
-    "xtend": "^4.0.0",
+    "url": "^0.10.1",
     "uuid": "^1.4.1",
-    "url": "^0.10.1"
+    "wizzard": "1.0.0",
+    "xtend": "^4.0.0"
   },
   "licenses": [
     {
@@ -57,6 +57,7 @@
     "jshint": "^2.5.1",
     "lint-trap": "^0.2.1",
     "opn": "^0.1.2",
+    "partial": "0.0.3",
     "pre-commit": "0.0.8",
     "request": "^2.36.0",
     "tap-spec": "^0.1.9",
