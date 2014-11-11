@@ -8,6 +8,7 @@ var semver = require('semver');
 var series = require('run-series');
 //var tilde = require('tilde-expansion');
 var Wizzard = require('wizzard').Wizzard;
+var Spinner = require('cli-spinner').Spinner;
 
 //var merge = require('../lib/commands/merge.js');
 var printHelp = require('./help/print-help.js');
@@ -189,8 +190,11 @@ function installPlugin(pkg, version, rollback, cb) {
         }
     }
     var cmd = 'i -S ' + installable;
-    console.log('Installing plugin...');
+    var spinner = new Spinner('Installing plugin...');
+    spinner.start();
     npm(cmd, potterHome, function validateInstall(err, stdout) {
+        spinner.stop();
+        console.log('');
         //make sure install was success
         //console.log(stderr);
         // console.log(stdout);
